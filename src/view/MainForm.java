@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-/**
- *
- * @author resahh
- */
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+
 public class MainForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainForm.class.getName());
@@ -30,85 +26,164 @@ public class MainForm extends javax.swing.JFrame {
 
         mainPnl = new javax.swing.JPanel();
         norhtPnl = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         eastPnl = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        loadBtn = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        saveBtn = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        updateBtn = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        deleteBtn = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
         southPnl = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        statusLbl = new javax.swing.JLabel();
+        exitBtn = new javax.swing.JButton();
         westPnl = new javax.swing.JPanel();
         centerPnl = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        workerTbl = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(950, 600));
         getContentPane().setLayout(new java.awt.GridLayout(1, 1));
 
         mainPnl.setLayout(new java.awt.BorderLayout());
 
-        norhtPnl.setPreferredSize(new java.awt.Dimension(700, 40));
+        norhtPnl.setPreferredSize(new java.awt.Dimension(700, 50));
 
-        javax.swing.GroupLayout norhtPnlLayout = new javax.swing.GroupLayout(norhtPnl);
-        norhtPnl.setLayout(norhtPnlLayout);
-        norhtPnlLayout.setHorizontalGroup(
-            norhtPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
-        );
-        norhtPnlLayout.setVerticalGroup(
-            norhtPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel1.setText("Sárga Zrt. dolgozók");
+        jLabel1.setPreferredSize(new java.awt.Dimension(156, 40));
+        norhtPnl.add(jLabel1);
 
         mainPnl.add(norhtPnl, java.awt.BorderLayout.NORTH);
 
-        javax.swing.GroupLayout eastPnlLayout = new javax.swing.GroupLayout(eastPnl);
-        eastPnl.setLayout(eastPnlLayout);
-        eastPnlLayout.setHorizontalGroup(
-            eastPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        eastPnl.setPreferredSize(new java.awt.Dimension(140, 575));
+        eastPnl.setLayout(new java.awt.GridLayout(10, 1));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
         );
-        eastPnlLayout.setVerticalGroup(
-            eastPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 54, Short.MAX_VALUE)
         );
+
+        eastPnl.add(jPanel4);
+
+        loadBtn.setText("Betöltés");
+        loadBtn.setPreferredSize(new java.awt.Dimension(110, 25));
+        jPanel5.add(loadBtn);
+
+        eastPnl.add(jPanel5);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 54, Short.MAX_VALUE)
+        );
+
+        eastPnl.add(jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 54, Short.MAX_VALUE)
+        );
+
+        eastPnl.add(jPanel7);
+
+        saveBtn.setText("Mentés");
+        saveBtn.setPreferredSize(new java.awt.Dimension(110, 25));
+        jPanel8.add(saveBtn);
+
+        eastPnl.add(jPanel8);
+
+        updateBtn.setText("Módosítás");
+        updateBtn.setPreferredSize(new java.awt.Dimension(110, 25));
+        jPanel9.add(updateBtn);
+
+        eastPnl.add(jPanel9);
+
+        deleteBtn.setText("Törlés");
+        deleteBtn.setPreferredSize(new java.awt.Dimension(110, 25));
+        jPanel10.add(deleteBtn);
+
+        eastPnl.add(jPanel10);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 54, Short.MAX_VALUE)
+        );
+
+        eastPnl.add(jPanel11);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 54, Short.MAX_VALUE)
+        );
+
+        eastPnl.add(jPanel12);
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 54, Short.MAX_VALUE)
+        );
+
+        eastPnl.add(jPanel13);
 
         mainPnl.add(eastPnl, java.awt.BorderLayout.EAST);
 
-        southPnl.setPreferredSize(new java.awt.Dimension(700, 40));
-        southPnl.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        southPnl.setPreferredSize(new java.awt.Dimension(700, 50));
+        southPnl.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 20, 5));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        statusLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        statusLbl.setText("jLabel1");
+        statusLbl.setPreferredSize(new java.awt.Dimension(600, 35));
+        southPnl.add(statusLbl);
 
-        southPnl.add(jPanel1);
-
-        jPanel2.setPreferredSize(new java.awt.Dimension(650, 100));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        southPnl.add(jPanel2);
-
-        jPanel3.setPreferredSize(new java.awt.Dimension(150, 100));
-
-        jButton1.setText("jButton1");
-        jPanel3.add(jButton1);
-
-        southPnl.add(jPanel3);
+        exitBtn.setText("Kilépés");
+        exitBtn.setAlignmentY(3.0F);
+        exitBtn.setPreferredSize(new java.awt.Dimension(110, 25));
+        southPnl.add(exitBtn);
 
         mainPnl.add(southPnl, java.awt.BorderLayout.SOUTH);
 
@@ -122,21 +197,27 @@ public class MainForm extends javax.swing.JFrame {
         );
         westPnlLayout.setVerticalGroup(
             westPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
+            .addGap(0, 549, Short.MAX_VALUE)
         );
 
         mainPnl.add(westPnl, java.awt.BorderLayout.WEST);
 
-        javax.swing.GroupLayout centerPnlLayout = new javax.swing.GroupLayout(centerPnl);
-        centerPnl.setLayout(centerPnlLayout);
-        centerPnlLayout.setHorizontalGroup(
-            centerPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-        );
-        centerPnlLayout.setVerticalGroup(
-            centerPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 575, Short.MAX_VALUE)
-        );
+        centerPnl.setLayout(new java.awt.GridLayout(1, 1));
+
+        workerTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(workerTbl);
+
+        centerPnl.add(jScrollPane1);
 
         mainPnl.add(centerPnl, java.awt.BorderLayout.CENTER);
 
@@ -172,14 +253,38 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel centerPnl;
+    private javax.swing.JButton deleteBtn;
     private javax.swing.JPanel eastPnl;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton exitBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton loadBtn;
     private javax.swing.JPanel mainPnl;
     private javax.swing.JPanel norhtPnl;
+    private javax.swing.JButton saveBtn;
     private javax.swing.JPanel southPnl;
+    private javax.swing.JLabel statusLbl;
+    private javax.swing.JButton updateBtn;
     private javax.swing.JPanel westPnl;
+    private javax.swing.JTable workerTbl;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getExitBtn(){ return exitBtn; }
+    public JButton getLoadBtn(){ return loadBtn; }
+    public JButton getSaveBtn(){ return saveBtn; }
+    public JButton getUpdateBtn(){ return updateBtn; }
+    public JButton getDeleteBtn(){ return deleteBtn; }
+    public JLabel getStatusLbl(){ return statusLbl; };
+    public void setStatusLbl( String text ){ statusLbl.setText( text ); };
+    public JTable getWorkerTbl(){ return workerTbl; };
 }
