@@ -113,7 +113,7 @@ public class MainForm extends javax.swing.JFrame {
 
         eastPnl.add(jPanel7);
 
-        saveBtn.setText("Mentés");
+        saveBtn.setText("Új dolgozó");
         saveBtn.setPreferredSize(new java.awt.Dimension(110, 25));
         jPanel8.add(saveBtn);
 

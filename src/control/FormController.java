@@ -45,7 +45,7 @@ public class FormController {
     
     private void loadData() {
         
-        FTableData = FDbCtrl.getWorkersData();
+        FTableData = FDbCtrl.getWorkersData( "__GETWORKERSDATA__" );
         
         DefaultTableModel model = new DefaultTableModel( FTableData, FColumNames );
         FMainFrm.getWorkerTbl().setModel( model );
@@ -53,17 +53,29 @@ public class FormController {
     
     private void addNewWorker() {
         
+        DataFormController dataFrmCtrl = new DataFormController( FDbCtrl, 1 );
+        
     }
     
     private void updateWorker() {
         
-        //int selectedRow = FMainFrm.getWorkerTbl().getSelectedRow();
-        //System.out.println( selectedRow );
-        
-        for( int i = 0; i < FMainFrm.getWorkerTbl().getColumnCount(); i++ ) {
+        if( FMainFrm.getWorkerTbl().getSelectedRow() != -1 ) {
             
-            System.out.println( FMainFrm.getWorkerTbl().getValueAt( FMainFrm.getWorkerTbl().getSelectedRow(), i ));
+            DataFormController dataFrmCtrl = new DataFormController( FDbCtrl, 2 );
+            Vector<Object> worker = new Vector<>();
+            
+            for( int i = 0; i < FMainFrm.getWorkerTbl().getColumnCount(); i++ ) {
+            
+                worker.add( FMainFrm.getWorkerTbl().getValueAt( FMainFrm.getWorkerTbl().getSelectedRow(), i ));
+            }
+            
+            dataFrmCtrl.updateWorker( worker );
+            
+        }else {
+            
+            System.err.println( "Nincs sor kiválasztva" );
         }
+        
     }
     
     private void exit() {

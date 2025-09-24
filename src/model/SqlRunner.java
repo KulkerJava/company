@@ -45,8 +45,10 @@ public class SqlRunner {
             stmt = AConn.createStatement();
             for( String xCommand : xSql ) {
                 
-                stmt.executeUpdate( xCommand ); 
+                stmt.addBatch( xCommand ); 
             }
+            
+            stmt.executeBatch();
             
         } catch ( SQLException ex ) {
             
@@ -84,5 +86,33 @@ public class SqlRunner {
         }
         
         return xItems;
+    }
+    
+    public boolean saveWorker( Connection conn, Vector<Object> worker ) {
+        
+        String[] sql = getSqlQuery();
+        PreparedStatement pstmt = null;
+        
+        try {
+            
+            pstmt = conn.prepareStatement( sql[ 0 ] );
+            pstmt.setString( 1, String.valueOf( worker.get( 0 )));
+            pstmt.setString( 2, String.valueOf( worker.get( 1 )));
+            pstmt.setString( 3, String.valueOf( worker.get( 2 )));
+            pstmt.setString( 4, String.valueOf( worker.get( 3 )));
+            
+            pstmt.executeUpdate();
+            
+            return true;
+            
+        } catch ( SQLException ex ) {
+            
+            return false;
+        }
+    }
+    
+    public boolean updateWorker( Connection conn, Vector<Object> worker ) {
+        
+        return true;
     }
 }
