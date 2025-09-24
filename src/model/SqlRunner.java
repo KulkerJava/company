@@ -6,8 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.Vector;
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 public class SqlRunner {
 
@@ -51,5 +52,37 @@ public class SqlRunner {
             
             ex.printStackTrace();
         }
+    }
+    
+    public Vector<Vector<Object>> getWorkersData( Connection AConn ) {
+        
+        String[] xQueries = getSqlQuery();
+        Statement xStmt = null;
+        ResultSet xRs = null;
+        Vector<Vector<Object>> xItems = new Vector<>();
+        
+        try {
+            
+            xStmt = AConn.createStatement();
+            xRs = xStmt.executeQuery( xQueries[ 0 ] );
+            if( xRs != null ) {
+                
+                while( xRs.next() ) {
+                    
+                    Vector<Object> xRow = new Vector<>();
+                    xRow.add( xRs.getObject( 1 ));
+                    xRow.add( xRs.getObject( 2 ));
+                    xRow.add( xRs.getObject( 3 ));
+                    xRow.add( xRs.getObject( 4 ));
+                    
+                    xItems.add( xRow );
+                }
+            }
+        } catch ( SQLException ex ) {
+            
+            System.out.println( "Hiba a lekérdezés során" );
+        }
+        
+        return xItems;
     }
 }
