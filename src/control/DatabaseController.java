@@ -54,12 +54,12 @@ public class DatabaseController {
         }
     }
     
-    public boolean newWorker( Vector<Object> worker, String sqlFile ) {
+    public boolean newWorker( Vector<Object> worker ) {
         
         connectToDatabase();
         if( FConn != null ) {
             
-            SqlRunner sqlRun = new SqlRunner( sqlFile );
+            SqlRunner sqlRun = new SqlRunner( "__NEWWORKER__" );
             boolean success = sqlRun.saveWorker( FConn, worker );
             FConnect.closeConnect();
             
@@ -71,8 +71,38 @@ public class DatabaseController {
         }
     }
     
-    public boolean updateWorker() {
+    public boolean updateWorker( Vector<Object> worker, String oldName ) {
         
-        return true;
+        connectToDatabase();
+        if( FConn != null ) {
+            
+            SqlRunner sqlRun = new SqlRunner( "__UPDATEWORKER__" );
+            boolean success = sqlRun.updateWorker( FConn, worker, oldName );
+            FConnect.closeConnect();
+            
+            return true;
+            
+        }else {
+            
+            return false;
+        }
+        
+    }
+    
+    public boolean deleteWorker( Vector<Object> worker ) {
+        
+        connectToDatabase();
+        if( FConn != null ) {
+            
+            SqlRunner sqlRun = new SqlRunner( "__DELETEWORKER__" );
+            boolean success = sqlRun.deleteWorker( FConn, worker );
+            FConnect.closeConnect();
+           
+            return true;
+            
+        }else {
+            
+            return false;
+        }
     }
 }

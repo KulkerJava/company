@@ -4,6 +4,7 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import view.MainForm;
+import view.WorkerDataForm;
 
 public class FormController {
 
@@ -41,6 +42,7 @@ public class FormController {
         FMainFrm.getLoadBtn().addActionListener( event -> loadData() );
         FMainFrm.getSaveBtn().addActionListener( event -> addNewWorker() );
         FMainFrm.getUpdateBtn().addActionListener( event -> updateWorker() );
+        FMainFrm.getDeleteBtn().addActionListener( event -> deleteWorker() );
     }
     
     private void loadData() {
@@ -53,7 +55,7 @@ public class FormController {
     
     private void addNewWorker() {
         
-        DataFormController dataFrmCtrl = new DataFormController( FDbCtrl, 1 );
+        DataFormController dataFrmCtrl = new DataFormController( FDbCtrl, 1, FMainFrm );
         
     }
     
@@ -61,21 +63,37 @@ public class FormController {
         
         if( FMainFrm.getWorkerTbl().getSelectedRow() != -1 ) {
             
-            DataFormController dataFrmCtrl = new DataFormController( FDbCtrl, 2 );
+            DataFormController dataFrmCtrl = new DataFormController( FDbCtrl, 2, FMainFrm );
             Vector<Object> worker = new Vector<>();
+            String oldName = String.valueOf( FMainFrm.getWorkerTbl().getValueAt( FMainFrm.getWorkerTbl().getSelectedRow(), 0 ));
             
             for( int i = 0; i < FMainFrm.getWorkerTbl().getColumnCount(); i++ ) {
             
                 worker.add( FMainFrm.getWorkerTbl().getValueAt( FMainFrm.getWorkerTbl().getSelectedRow(), i ));
             }
             
-            dataFrmCtrl.updateWorker( worker );
+            dataFrmCtrl.setTextFields( worker, oldName );
             
         }else {
             
-            System.err.println( "Nincs sor kiválasztva" );
+            FMainFrm.setStatusLbl( "Nincs dolgozó kiválasztva" );
         }
         
+    }
+    
+    private void deleteWorker() {
+        
+        Vector<Object> worker = new Vector<>();
+        for( int i = 0; i < FMainFrm.getWorkerTbl().getColumnCount(); i++ ) {
+            
+            worker.add( FMainFrm.getWorkerTbl().getValueAt( FMainFrm.getWorkerTbl().getSelectedRow(), i ));
+        }
+        
+        boolean success = FDbCtrl.deleteWorker( worker );
+        if( success ) {
+            
+            FMainFrm.setStatusLbl( "Sikeres törlés" );
+        }
     }
     
     private void exit() {

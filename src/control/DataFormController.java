@@ -1,27 +1,31 @@
 package control;
 
 import java.util.Vector;
-import view.DataForm;
+import view.MainForm;
+import view.WorkerDataForm;
 
 public class DataFormController {
 
     private DatabaseController FDbCrtl;
-    private DataForm FDataFrm;
-    private String sqlFile;
+    private WorkerDataForm FDataFrm;
     private int FStatus;
+    private String oldName;
     
-    public DataFormController( DatabaseController ADbCtrl, int AStatus ) {
+    public DataFormController( DatabaseController ADbCtrl, int AStatus, MainForm mainFrm ) {
         
         FDbCrtl = ADbCtrl;
-        FDataFrm = new DataForm();
+        FDataFrm = new WorkerDataForm( mainFrm, false );
         FStatus = AStatus;
-        initComponents();
         addEventHolder();
+        initComponents();
     }
     
     private void addEventHolder() {
         
-        FDataFrm.getSaveBtn().addActionListener( event -> saveWorker() );
+        FDataFrm.getSaveBtn().addActionListener( event -> {
+            
+            switch( FStatus ) { case 1 -> saveWorker(); case 2 -> updateWorker(); }
+        });
         FDataFrm.getCancelBtn().addActionListener( event -> cancelMethod() );
         FDataFrm.getExitBtn().addActionListener( event -> exit() );
     }
@@ -34,17 +38,18 @@ public class DataFormController {
             case 1 -> {
                 FDataFrm.getSaveBtn().setText( "Mentés" );
                 FDataFrm.setTitle( "Új dolgozó felvétele" );
-                sqlFile = "__NEWWORKER__";
+                FDataFrm.setLocationRelativeTo( FDataFrm );
+                FDataFrm.setModal( true );
+                FDataFrm.setVisible( true );
             }
             case 2 -> {
                 FDataFrm.getSaveBtn().setText( "Módosítás" );
                 FDataFrm.setTitle( "Dolgozó adatainak módosítása" );
-                sqlFile = "__UPDATEWORKER__";
             }
         }
         
         FDataFrm.setLocationRelativeTo( FDataFrm );
-        FDataFrm.setVisible( true );
+        
     }
     
     private void saveWorker() {
@@ -55,7 +60,7 @@ public class DataFormController {
         worker.add( FDataFrm.getRoleTf().getText() );
         worker.add( FDataFrm.getDepthTf().getText() );
         
-        boolean success = FDbCrtl.newWorker( worker, sqlFile );
+        boolean success = FDbCrtl.newWorker( worker );
         if( success ) {
             
             FDataFrm.setModeLbl( "Sikeres kiírás" );
@@ -63,14 +68,31 @@ public class DataFormController {
         }
     }
     
-    public void updateWorker( Vector<Object> worker ) {
+    public void setTextFields( Vector<Object> worker, String oldName ) {
         
         FDataFrm.setNameTf( String.valueOf( worker.get( 0 )));
         FDataFrm.setHireTf( String.valueOf( worker.get( 1 )));
         FDataFrm.setRoleTf( String.valueOf( worker.get( 2 )));
         FDataFrm.setDepthTf( String.valueOf( worker.get( 3 )));
+        this.oldName = oldName;
+        FDataFrm.setModal( true );
+        FDataFrm.setVisible( true );
+    }
+    
+    public void updateWorker() {
         
-        //saveWorker();
+        Vector<Object> worker = new Vector<>();
+        worker.add( FDataFrm.getNameTf().getText() );
+        worker.add( FDataFrm.getHireTf().getText() );
+        worker.add( FDataFrm.getRoleTf().getText() );
+        worker.add( FDataFrm.getDepthTf().getText() );
+        
+        boolean success = FDbCrtl.updateWorker( worker, oldName );
+        if( success ) {
+            
+            FDataFrm.setModeLbl( "Sikeres frissítés" );
+            cancelMethod();
+        }
     }
     
     private void cancelMethod() {

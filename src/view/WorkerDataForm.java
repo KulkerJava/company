@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
 
@@ -11,14 +11,15 @@ import javax.swing.JTextField;
  *
  * @author resahh
  */
-public class DataForm extends javax.swing.JFrame {
+public class WorkerDataForm extends javax.swing.JDialog {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DataForm.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(WorkerDataForm.class.getName());
 
     /**
-     * Creates new form DataForm
+     * Creates new form WorkerDataForm
      */
-    public DataForm() {
+    public WorkerDataForm(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -35,9 +36,13 @@ public class DataForm extends javax.swing.JFrame {
         northPnl = new javax.swing.JPanel();
         modeLbl = new javax.swing.JLabel();
         eastPnl = new javax.swing.JPanel();
-        southPnl = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
         saveBtn = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
         cancelBtn = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        southPnl = new javax.swing.JPanel();
         exitBtn = new javax.swing.JButton();
         westPnl = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -59,7 +64,7 @@ public class DataForm extends javax.swing.JFrame {
         depthTf = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 300));
+        setPreferredSize(new java.awt.Dimension(500, 300));
         getContentPane().setLayout(new java.awt.GridLayout(1, 1));
 
         mainPnl.setLayout(new java.awt.BorderLayout());
@@ -69,37 +74,39 @@ public class DataForm extends javax.swing.JFrame {
 
         mainPnl.add(northPnl, java.awt.BorderLayout.PAGE_START);
 
-        eastPnl.setPreferredSize(new java.awt.Dimension(40, 260));
+        eastPnl.setPreferredSize(new java.awt.Dimension(150, 260));
+        eastPnl.setLayout(new java.awt.GridLayout(4, 1));
+        eastPnl.add(jPanel9);
 
-        javax.swing.GroupLayout eastPnlLayout = new javax.swing.GroupLayout(eastPnl);
-        eastPnl.setLayout(eastPnlLayout);
-        eastPnlLayout.setHorizontalGroup(
-            eastPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        eastPnlLayout.setVerticalGroup(
-            eastPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
-        );
+        jPanel10.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+
+        saveBtn.setText("Mentés");
+        saveBtn.setPreferredSize(new java.awt.Dimension(110, 25));
+        jPanel10.add(saveBtn);
+
+        eastPnl.add(jPanel10);
+
+        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
+
+        cancelBtn.setText("Mégsem");
+        cancelBtn.setPreferredSize(new java.awt.Dimension(110, 25));
+        jPanel11.add(cancelBtn);
+
+        eastPnl.add(jPanel11);
+        eastPnl.add(jPanel12);
 
         mainPnl.add(eastPnl, java.awt.BorderLayout.EAST);
 
         southPnl.setPreferredSize(new java.awt.Dimension(600, 40));
-
-        saveBtn.setText("Mentés");
-        saveBtn.setPreferredSize(new java.awt.Dimension(110, 25));
-        southPnl.add(saveBtn);
-
-        cancelBtn.setText("Mégsem");
-        cancelBtn.setPreferredSize(new java.awt.Dimension(110, 25));
-        southPnl.add(cancelBtn);
+        southPnl.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 20, 5));
 
         exitBtn.setText("Kilépés");
+        exitBtn.setPreferredSize(new java.awt.Dimension(110, 23));
         southPnl.add(exitBtn);
 
         mainPnl.add(southPnl, java.awt.BorderLayout.SOUTH);
 
-        westPnl.setPreferredSize(new java.awt.Dimension(150, 220));
+        westPnl.setPreferredSize(new java.awt.Dimension(100, 220));
         westPnl.setLayout(new javax.swing.BoxLayout(westPnl, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
@@ -182,8 +189,20 @@ public class DataForm extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new DataForm().setVisible(true));
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                WorkerDataForm dialog = new WorkerDataForm(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -198,6 +217,9 @@ public class DataForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -205,6 +227,7 @@ public class DataForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel mainPnl;
     private javax.swing.JLabel modeLbl;
     private javax.swing.JTextField nameTf;

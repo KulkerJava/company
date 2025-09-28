@@ -101,6 +101,29 @@ public class SqlRunner {
             pstmt.setString( 3, String.valueOf( worker.get( 2 )));
             pstmt.setString( 4, String.valueOf( worker.get( 3 )));
             
+            pstmt.execute();
+            
+            return true;
+            
+        } catch ( SQLException ex ) {
+            
+            return false;
+        }
+    }
+    
+    public boolean updateWorker( Connection conn, Vector<Object> worker, String oldName ) {
+        
+        String[] sql = getSqlQuery();
+        PreparedStatement pstmt = null;
+        
+        try {
+            
+            pstmt = conn.prepareStatement( sql[ 0 ] );
+            pstmt.setString( 1, String.valueOf( worker.get( 0 )));
+            pstmt.setString( 2, String.valueOf( worker.get( 1 )));
+            pstmt.setString( 3, String.valueOf( worker.get( 2 )));
+            pstmt.setString( 4, String.valueOf( worker.get( 3 )));
+            pstmt.setString( 5,  oldName );
             pstmt.executeUpdate();
             
             return true;
@@ -111,8 +134,23 @@ public class SqlRunner {
         }
     }
     
-    public boolean updateWorker( Connection conn, Vector<Object> worker ) {
+    public boolean deleteWorker( Connection conn, Vector<Object> worker ) {
         
-        return true;
+        String[] sql = getSqlQuery();
+        PreparedStatement pstmt = null;
+        
+        try {
+            
+            pstmt = conn.prepareStatement( sql[ 0 ] );
+            pstmt.setString( 1, String.valueOf( worker.get( 0 )));
+            pstmt.setString( 2, String.valueOf( worker.get( 1 )));
+            pstmt.execute();
+            
+            return true;
+            
+        } catch ( SQLException ex ) {
+            
+            return false;
+        }
     }
 }
